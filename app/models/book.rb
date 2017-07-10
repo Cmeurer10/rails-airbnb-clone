@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
-  belongs_to :purchase
+  has_one :purchase
   belongs_to :user
+  has_one :buyer, through: :purchase, source: :user
 end

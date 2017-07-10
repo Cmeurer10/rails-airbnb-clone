@@ -5,12 +5,12 @@ class CreateBooks < ActiveRecord::Migration[5.0]
       t.string :edition
       t.string :condition
       t.integer :price
-      t.string :class
+      t.string :subject
       t.string :description
       t.string :publisher
       t.string :isbn
       t.boolean :sold
-      t.references :users, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

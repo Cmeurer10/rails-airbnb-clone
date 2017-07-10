@@ -20,25 +20,25 @@ ActiveRecord::Schema.define(version: 20170710053000) do
     t.string   "edition"
     t.string   "condition"
     t.integer  "price"
-    t.string   "class"
+    t.string   "subject"
     t.string   "description"
     t.string   "publisher"
     t.string   "isbn"
     t.boolean  "sold"
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["users_id"], name: "index_books_on_users_id", using: :btree
+    t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.integer  "book_id"
     t.string   "dialogue"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_purchases_on_book_id", using: :btree
-    t.index ["users_id"], name: "index_purchases_on_users_id", using: :btree
+    t.index ["user_id"], name: "index_purchases_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20170710053000) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  add_foreign_key "books", "users", column: "users_id"
+  add_foreign_key "books", "users"
   add_foreign_key "purchases", "books"
-  add_foreign_key "purchases", "users", column: "users_id"
+  add_foreign_key "purchases", "users"
 end
