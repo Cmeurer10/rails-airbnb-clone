@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  has_one :purchase
+  has_one :purchase, dependent: :nullify
   belongs_to :user
   has_one :buyer, through: :purchase, source: :user
   validates :title, presence: true
