@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #users
-User.destory_all
+Users.destory_all
 
 User.create({"id"=>1, "first_name"=>"Kevin", "last_name"=>"Johnson", "university"=>"Tokyo University", "address" => "2-5-5 Azabu Juban, Minato, Tokyo"})
 User.create({"id"=>2, "first_name"=>"Earl", "last_name"=>"Harris", "university"=>"Waseda University", "address" => "3-11-1 Shinjuku, Tokyo"})
@@ -20,7 +20,7 @@ User.create({"id"=>8, "first_name"=>"David", "last_name"=>"Parker", "university"
 
 #books
 
-Book.destroy_all
+Books.destroy_all
 
 Book.create({"id"=>1, "title"=>"Principal of Microeconomics", "edition"=>"7th", "condition"=>"Like New", "price"=>"42", "class"=>"Econ 101", "description"=>"The book is quite new, i used it for just a few times as I have replied on my professor's slides.", "sold?"=>"No", "id_purchase"=>nil, "id_user"=>1, "publisher"=>"Cengage Learning"})
 Book.create({"id"=>2, "title"=>"Intermediate Macroeconomics", "edition"=>"3rd", "condition"=>"Fair", "price"=>"28", "class"=>"Econ 102", "description"=>"The book is quite new, i used it for just a few times as I have replied on my professor's slides.", "sold?"=>"No", "id_purchase"=>nil, "id_user"=>2}, "publisher"=>"Cengage Learning"})
@@ -45,8 +45,8 @@ Book.create({"id"=>13, "title"=>"Early Film History", "edition"=>"2nd", "conditi
 
 Purchases.destroy_all
 
-Purchases.create({"id"=>1, "id_user"=>3, "dialogue"=>"I would like to purchase this book, make an exchange tomorrow?", "book_id"=>3})
-Purchases.create({"id"=>2, "id_user"=>7, "dialogue"=>"let's meet tomorrow to make the transaction of the book, alright?", "book_id"=>9})
-Purchases.create({"id"=>3, "id_user"=>2, "dialogue"=>"Do you want to make an exchange next Monday?", "book_id"=>10})
-Purchases.create({"id"=>4, "id_user"=>8, "dialogue"=>"I am in need of this book, please contact me at 123-123-234, thanks!", "book_id"=>13})
+Purchase.create({"id"=>1, "id_user"=>3, "dialogue"=>"I would like to purchase this book, make an exchange tomorrow?", "book_id"=>3})
+Purchase.create({"id"=>2, "id_user"=>7, "dialogue"=>"let's meet tomorrow to make the transaction of the book, alright?", "book_id"=>9})
+Purchase.create({"id"=>3, "id_user"=>2, "dialogue"=>"Do you want to make an exchange next Monday?", "book_id"=>10})
+Purchase.create({"id"=>4, "id_user"=>8, "dialogue"=>"I am in need of this book, please contact me at 123-123-234, thanks!", "book_id"=>13})
 
