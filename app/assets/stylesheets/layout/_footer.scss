@@ -1,3 +1,10 @@
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .footer-distributed{
   background-color: #2f70a3;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -11,6 +18,19 @@
 }
 
 /* Footer left */
+
+.footer-left {
+  padding-left: 0;
+
+  a {
+    color: #1f293a;
+    padding-right: 10px;
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
 
 .footer-distributed .footer-left{
   float: left;
@@ -84,7 +104,8 @@
   display: inline-block;
   vertical-align: top;
   margin: 15px 42px 0 0;
-  color: #ffffff;
+  color: #1f293a;
+  margin-bottom: 10px;
 }
 
 /* The contact form */
