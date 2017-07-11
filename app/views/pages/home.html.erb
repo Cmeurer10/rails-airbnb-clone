@@ -3,7 +3,8 @@
 		<h1>Welcome to Booktrader</h1>
 		<h4>Skip the bookstore.  Get textbooks from students</h4>
 	</div>
-	<%= form_tag('/books') do -%>
+
+	<%= form_tag('/books', method: :get) do -%>
   		<div class="search text-center">
   			<%= text_field_tag :title, "Search for your book title" %>
   		</div>

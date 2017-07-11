@@ -1,11 +1,12 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
   # To be shown on search pages
   def index
     @books = Book.all.to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
+    @universities = @books.uniq { |u| u.university }
   end
 
   # GET /books/1
@@ -13,6 +14,16 @@ class BooksController < ApplicationController
   # To be used on an individual book's page
   def show
     @books = Book.all.where(title: book_show_params[:title])
+    param_title = params[:id].gsub('_', '').downcase
+    titles = Book.all.select(:title).select do |book|
+      book[:title].downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') == param_title
+    end
+    titles = titles.map(&:title)
+    @books = []
+    titles.each do |title|
+      @books << Book.all.where(title: title).to_a
+    end
+    @books = @books.to_a.flatten
   end
 
   # GET /books/new
@@ -87,9 +98,5 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :edition, :condition, :price, :class, :description, :sold, :purchase_id, :user_id)
-    end
-
-    def book_show_params
-      params.require(:book).permit(:title)
     end
 end
