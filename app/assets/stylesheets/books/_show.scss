@@ -1,6 +1,14 @@
 .list-card{
 	height: 10%;
 	margin: 20px 0 20px 20px;
+	border: 1px solid black;
+	border-radius: 25px;
+
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: warp;
+
 }
 .book-details{
 	display: flex;
@@ -21,4 +29,10 @@
 }
 .other{
 	padding: 15px 0px;
+}
+.seller p{
+	display: inline-block;
+}
+.condition p{
+	display: inline-block;
 }

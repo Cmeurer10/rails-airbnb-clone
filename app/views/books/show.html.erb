@@ -16,36 +16,34 @@
 		<div class="col-md-5">
 			<h2>Filters:</h2>
 		</div>
-		<div class="sidebar col-md-2">
+		<div class="sidebar col-md-2  hidden-sm hidden-xs">
 			<%= render "filter-sidebar" %>
 		</div>
 	</div>
 	<div class="row">
 		<% @books.each do |book| %>
-		<div class="col-md-12 list-card">
-			<div class="row">
-			<div class="price col-md-1">
+		<div class="col-md-10 list-card">
+			<div class="price">
   				<p>$<%= book.price %></p>
 			</div>
-			<div class="seller col-md-1">
+			<div class="seller">
 				<p>Sold by:</p>
 				<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar" %>
 			</div>
-			<div class="university col-md-2">
+			<div class="university">
 				University:
 				<p><%= book.user.university %></p>
 			</div>
-			<div class="condition col-md-1">
+			<div class="condition">
 				<p>Condition:</p>
 				<%= book.condition %>
 			</div>
-			<div class="description col-md-3">
+			<div class="description">
 				<p>Description</p>
 				<%= book.description %>
 			</div>
-			<div class="buy col-md-2">
+			<div class="buy">
 				<div class="btn btn-primary">Buy</div>
-			</div>
 			</div>
 		</div>
 		<% end %>
