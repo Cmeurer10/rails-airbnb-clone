@@ -3,22 +3,27 @@
 <h1>Results for <%= params[:title] %></h1>
 <div class="results">
   <div class="row">
-    <div class="col-md-10">
-    <% @books.each do |book| %>
-			<% title = book.title.strip.gsub(/[[:punct:]]/, ' ').split.map(&:capitalize).join(' ') %>
-      <%= link_to "/books/#{title.gsub(' ', '_')}", method: 'get' do %>
-        <div class="col-xs-6 col-sm-4">
-          <div class="book-card">
-            <div class="card-book-picture"><%= image_tag "100x100.png" %></div>
-            <div class="card-description">
-              <h2><%= title %></h2>
-              <p><%= book.publisher %></p>
+    <div class="col-md-10 col-xs-12">
+        <div class="row">
+          <% @books.each do |book| %>
+            <div class="col-xs-6 col-sm-4">
+            <% title = book.title.strip.gsub(/[[:punct:]]/, ' ').split.map(&:capitalize).join(' ') %>
+            <%= link_to "/books/#{title.gsub(' ', '_')}", method: 'get' do %>
+              <div class="book-card">
+                <div class="card-book-picture"><%= image_tag "100x100.png" %></div>
+                <div class="card-description">
+                  <h2><%= title %></h2>
+                  <p><%= book.publisher %></p>
+               </div>
+              </div>
+            <% end %>
             </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="sidebar col-md-2">
-      <%= render 'filter-sidebar' %>
-    </div>
+          <% end %>
+        </div>
+     </div>
+      <div class="sidebar col-md-2">
+         <%= render 'filter-sidebar' %>
+      </div>
   </div>
+</div>
+
