@@ -17,7 +17,7 @@
     <% if current_user %>
       <div class="navbar-wagon-item">
        <div class="dropdown">
-        <%= image_tag user.avatar, {class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle": "dropdown" } %>
+        <%= link_to current_user.email, {class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle": "dropdown" } %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li><a href="#">Dashboard</a></li>
           <li><a href="#">Log Out</a></li>
