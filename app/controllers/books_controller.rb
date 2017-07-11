@@ -13,6 +13,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   # To be used on an individual book's page
   def show
+    @books = Book.all.where(title: book_show_params[:title])
     param_title = params[:id].gsub('_', '').downcase
     titles = Book.all.select(:title).select do |book|
       book[:title].downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') == param_title
@@ -98,8 +99,4 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :edition, :condition, :price, :class, :description, :sold, :purchase_id, :user_id)
     end
-
-    # def book_show_params
-    #   params.require(:book).permit(:title)
-    # end
 end
