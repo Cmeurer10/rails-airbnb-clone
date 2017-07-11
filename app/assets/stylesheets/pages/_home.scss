@@ -2,3 +2,11 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.jumbotron{
+   background-image: linear-gradient(rgba(41,120,160,0.3), rgba(41,120,160,0.2)), asset_url('jumbotron.jpg');
+   background-size: cover;
+   background-position: center;
+   color: white;
+   height: 600px;
+   margin: 10px 0;
+} 
