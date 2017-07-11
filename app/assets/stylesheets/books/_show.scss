@@ -1,0 +1,24 @@
+.list-card{
+	height: 10%;
+	margin: 20px 0 20px 20px;
+}
+.book-details{
+	display: flex;
+	justify-content: space-around;
+	margin: 15px 0; 
+	border-bottom: 2px solid black;
+	height: 400px;
+}
+.book-details ul{
+	list-style: none;
+}
+.title{
+	font-weight: bolder;
+	font-size: 2.5em;
+}
+.cover{
+	padding: 20px;
+}
+.other{
+	padding: 15px 0px;
+}

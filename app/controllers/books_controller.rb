@@ -24,6 +24,7 @@ class BooksController < ApplicationController
       @books << Book.all.where(title: title).to_a
     end
     @books = @books.to_a.flatten
+    @universities = @books.uniq { |u| u.university }
   end
 
   # GET /books/new
