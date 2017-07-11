@@ -5,10 +5,7 @@
 	</div>
 	<%= form_tag('/books') do -%>
   		<div class="search text-center">
-  			<%= text_field_tag :title %>	
+  			<%= text_field_tag :title, "Search for your book title" %>
   		</div>
-  		<div class="btn btn-search">
-  			<%= submit_tag 'Search' %>
-  		</div>	
 	<% end -%>
 </div>
