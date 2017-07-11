@@ -17,4 +17,5 @@ class Book < ApplicationRecord
   def university
     return self.user.university
   end
+
 end
