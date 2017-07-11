@@ -1,35 +1,48 @@
-.card {
+.book-card {
   height: 200px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  // background-color: #E8E8E8;
+  // background-color: #F6EFEE;
+  background-color: rgba(188, 171, 121, 0.2);
+  border: 1px solid #2978A0;
+  border-radius: 5px;
   background-size: cover !important;
-  color: white;
-  position: relative;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: center;
+  align-content: space-around;
+  text-align: center;
 }
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
+// .card-book-picture {
+//   bottom: 20px;
+//   left: 20px;
+//   width: 100px;
+//   height: 100px;
+// }
+// .card-user {
+//   right: 20px;
+//   top: 20px;
+// }
 .card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 20px;
+  left: 20px;
   font-size: 10px;
   text-transform: uppercase;
 }
 .card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+  bottom: 20px;
+  left: 150px;
 }
 .card-description h2 {
-  font-size: 24px;
+  font-size: 14px;
+  font-weight: bolder;
 }
 .card-description p {
   font-size: 13px;
 }
 .card-link {
-  position: absolute;
   top: 0;
   bottom: 0;
   right: 0;

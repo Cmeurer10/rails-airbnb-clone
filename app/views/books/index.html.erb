@@ -2,31 +2,25 @@
 
 <h1>Books</h1>
 
-<div class="container">
+<div class="container col-md-9">
   <div class="row">
-    <div class="col-xs-9 col-sm-6 col-md-5">
-      <div class="book-card">
-        <div class="card-category">Popular</div>
-        <div class="card-description">
-          <h2>Some stuff</h2>
-          <p>Very cool stuff, useful and smart</p>
+
+    <% @books.each do |book| %>
+      <%= link_to "/books/#{book.title.gsub(' ', '_')}", method: 'get' do %>
+        <div class="col-xs-6 col-sm-4">
+          <div class="book-card">
+            <div class="card-book-picture"><%= image_tag "100x100.png" %></div>
+            <div class="card-description">
+              <h2><%= book.title.strip.gsub(/[[:punct:]]/, ' ').split.map(&:capitalize).join(' ') %></h2>
+              <p><%= book.publisher %></p>
+            </div>
+            <a class="card-link" href="#" ></a>
+          </div>
         </div>
-        <img class="card-user avatar" src="user.jpg">
-        <a class="card-link" href="#" ></a>
-      </div>
-    </div>
-    <div class="col-xs-9 col-sm-6 col-md-5">
-      <div class="book-card">
-        <div class="card-category">Popular</div>
-        <div class="card-description">
-          <h2>Some stuff</h2>
-          <p>Very cool stuff, useful and smart</p>
-        </div>
-        <img class="card-user avatar" src="user.jpg">
-        <a class="card-link" href="#" ></a>
-      </div>
-    </div>
-    <!-- <div class="col-xs-9 col-sm-6 col-md-4">
+      <% end %>
+    <% end %>
+
+    <!-- <div class="col-xs-12 col-sm-6">
       <div class="book-card">
         <div class="card-category">Popular</div>
         <div class="card-description">
@@ -39,6 +33,18 @@
     </div> -->
   </div>
 </div>
+
+<!-- <div class="col-xs-9 col-sm-6 col-md-2">
+  <div class="book-card">
+    <div class="card-category">Popular</div>
+    <div class="card-description">
+      <h2>Some stuff</h2>
+      <p>Very cool stuff, useful and smart</p>
+    </div>
+    <img class="card-user avatar" src="user.jpg">
+    <a class="card-link" href="#" ></a>
+  </div>
+</div> -->
 
 <!--
 <table>
