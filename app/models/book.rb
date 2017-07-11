@@ -13,4 +13,9 @@ class Book < ApplicationRecord
   def sold?
     return !buyer.nil?
   end
+
+  def university
+    return self.user.university
+  end
+
 end

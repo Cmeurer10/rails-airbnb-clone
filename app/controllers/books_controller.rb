@@ -6,6 +6,7 @@ class BooksController < ApplicationController
   # To be shown on search pages
   def index
     @books = Book.all.to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
+    @universities = @books.uniq { |u| u.university }
   end
 
   # GET /books/1

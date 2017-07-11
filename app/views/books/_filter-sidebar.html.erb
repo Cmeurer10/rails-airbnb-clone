@@ -1,0 +1,40 @@
+<div class="sidebar col-md-2 col-md-offset-12">
+	<%= form_tag books_path, method: :get do -%>
+	<div class="row">
+		<div class= "field">
+			<p>University:</p> <%= select_tag :university, options_from_collection_for_select(@universities, 'id', 'university', params[:university]) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class= "field">
+			<p>Edition:</p>
+			<%= select_tag :edition, options_from_collection_for_select(@books, 'id', 'edition', params[:edition]) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class= "field">
+			<p>Condition:</p>
+			<%= select_tag :condition, options_from_collection_for_select(@books, 'id', 'condition', params[:condition]) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class= "field">
+			<p>Subject:</p>
+			<%= select_tag :subject, options_from_collection_for_select(@books, 'id', 'subject', params[:subject]) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class= "field">
+			<p>Price:</p>
+			<%= select_tag :price, options_from_collection_for_select(@books, 'id', 'price', params[:price]) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="field filter">
+		    <%= hidden_field_tag params[:title] %>
+		    <%= submit_tag 'Filter' %>
+		</div>
+	</div>
+
+	<% end -%>
+</div>
