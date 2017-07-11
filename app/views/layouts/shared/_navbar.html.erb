@@ -1,0 +1,44 @@
+<div class="navbar-wagon">
+  <!-- Logo -->
+  <%= link_to (image_tag "logo.png", {class: "navbar-wagon-brand", id: "logo"}), root_path %>
+ 
+
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+    <!-- Profile picture and dropdown -->
+    <div class="navbar-wagon-item">
+      <% if current_user %>
+        <%= link_to "Sell your books", new_book_path, class: "nav-link" %>
+      <% else %>
+        <%= link_to "Sell your books", new_user_session_path, class: "nav-link" %>
+      <% end %>
+    </div>
+    <% if current_user %>
+      <div class="navbar-wagon-item">
+       <div class="dropdown">
+          <%=  image_tag current_user.facebook_picture_url || "Welcome #{current_user.first_name}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': 'dropdown'  %>
+          <ul class= "dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><%= link_to "Dashboard", root_path %></li>
+            <li><%= link_to "LogOut", destroy_user_session_path %></li>
+          </ul>
+      </div>
+     </div>
+      <% else %>
+      <div class="navbar-wagon-item"><%= link_to "Login", new_user_session_path, class: "nav-link" %></div>
+      <div class="navbar-wagon-item"><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></div>
+    <% end %>
+  </div>
+
+  <!-- Dropdown appearing on mobile only -->
+  <div class="navbar-wagon-item hidden-md hidden-lg">
+    <div class="dropdown">
+      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <li><a href="#">Some mobile link</a></li>
+        <li><a href="#">Other one</a></li>
+        <li><a href="#">Other one</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
