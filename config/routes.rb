@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
   resources :books
+  get '/books/:title', to: 'books#show'
   root to: 'pages#home'
 end
