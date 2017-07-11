@@ -14,6 +14,7 @@ class BooksController < ApplicationController
   # To be used on an individual book's page
   def show
     param_title = params[:id].gsub('_', '').downcase
+    p params[:id]
     titles = Book.all.select(:title).select do |book|
       book[:title].downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') == param_title
     end
