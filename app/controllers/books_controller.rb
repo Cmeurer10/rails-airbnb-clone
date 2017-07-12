@@ -27,6 +27,7 @@ class BooksController < ApplicationController
     @universities = @books.uniq { |u| u.university }
     @books = Book.search(params)
     @title = params[:title]
+
   end
 
   # GET /books/new
