@@ -1,4 +1,6 @@
 <!-- TODO: Dummy display, replace with corret -->
+<% delete_message = "Are you sure? This will remove the book from your dashboard as well."  %>
+
 <h2>You are selling:</h2>
 <div class="container">
   <div class="col-md-10 col-xs-12">
@@ -12,6 +14,8 @@
               <div class="card-description">
                 <h2><%= title %></h2>
                 <p><%= link_to "Edit this book", "dashboard/update/#{book.id}" %></p>
+                <p><%= link_to "Remove from store", "dashboard/#{book.id}",
+                                method: :delete, data: { confirm: delete_message } %></p>
              </div>
             </div>
           <% end %>
