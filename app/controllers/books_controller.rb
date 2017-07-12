@@ -13,7 +13,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   # To be used on an individual book's page
   def show
-    param_title = params[:id].gsub('_', '').downcase
+    param_title = params[:title].gsub('_', '').downcase
     titles = Book.all.select(:title).select do |book|
       book[:title].downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') == param_title
     end
@@ -22,7 +22,7 @@ class BooksController < ApplicationController
     titles.each do |title|
       @books << Book.all.where(title: title).to_a
     end
-    @books = @books.to_a.flatten
+    @books = @books.to_a.flatten.uniq(&:id)
   end
 
   # GET /books/new
