@@ -7,8 +7,8 @@ class Book < ApplicationRecord
   validates :condition, presence: true, inclusion: { in: ['Good', 'Like New', 'Poor', 'Fair'] }
   validates :price, presence: true, numericality: true
   validates :subject, presence: true
-  validates :isbn, presence: true
   validates :publisher, presence: true
+  # validates :isbn, presence: true
 
   def sold?
     return !buyer.nil?

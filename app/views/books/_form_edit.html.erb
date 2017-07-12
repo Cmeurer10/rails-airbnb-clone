@@ -1,4 +1,4 @@
-<%= simple_form_for(@book, url: "/dashboard") do |f| %>
+<%= simple_form_for(@book, url: "/dashboard/#{book.id}") do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
