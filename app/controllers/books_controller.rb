@@ -5,25 +5,26 @@ class BooksController < ApplicationController
   # GET /books.json
   # To be shown on search pages
   def index
-    @books = Book.search(params)
+    @books = Book.search(params).to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
     @title = params[:title]
+
   end
 
   # GET /books/1
   # GET /books/1.json
   # To be used on an individual book's page
   def show
-    # param_title = params[:title].gsub('_', '').downcase
-    # titles = Book.all.select(:title).select do |book|
-    #   book[:title].downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') == param_title
-    # end
-    # titles = titles.map(&:title)
-    # @books = []
-    # titles.each do |title|
-    #   @books << Book.all.where(title: title).to_a
-    # end
-    # @books = @books.to_a.flatten.uniq(&:id)
-    # @universities = @books.uniq { |u| u.university }
+    param_title = params[:title].gsub('_', '').downcase
+    titles = Book.all.select(:title).select do |book|
+      book[:title].downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') == param_title
+    end
+    titles = titles.map(&:title)
+    @books = []
+    titles.each do |title|
+      @books << Book.all.where(title: title).to_a
+    end
+    @books = @books.to_a.flatten.uniq(&:id)
+    @universities = @books.uniq { |u| u.university }
     @books = Book.search(params)
     @title = params[:title]
   end
