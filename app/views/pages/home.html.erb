@@ -6,7 +6,7 @@
 
 	<%= form_tag('/books', method: :get) do -%>
   		<div class="search text-center">
-  			<%= text_field_tag :title, "Search for your book title" %>
+  			<%= text_field_tag :title, nil, placeholder: "Search for your book title" %>
   		</div>
 	<% end -%>
 </div>
