@@ -1,4 +1,51 @@
-<h1>Books Go Here</h1>
-<% @books.each do |book| %>
-  <p><%= book.title %></p>
-<% end %>
+<div class="result">
+	<div class="row">
+		<div class="col-md-5 book-details">
+			<div class="cover">
+			<!-- @books[0].cover, {class: "book-cover", id: "cover"} || -->
+				<%= image_tag "100x100.png" %>
+			</div>
+			<div class="details">
+				<ul>
+					<li class="title"><%= @books[0].title %></li>
+					<li class="other"><%= @books[0].publisher %></li>
+					<li class="other">ISBN:<%= @books[0].isbn %></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<h2>Filters:</h2>
+		</div>
+		<div class="sidebar col-md-2  hidden-sm hidden-xs">
+			<%= render "filter-sidebar" %>
+		</div>
+	</div>
+	<div class="row">
+		<% @books.each do |book| %>
+		<div class="col-md-10 list-card">
+			<div class="price">
+  				<p>$<%= book.price %></p>
+			</div>
+			<div class="seller">
+				<p>Sold by:</p>
+				<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar" %>
+			</div>
+			<div class="university">
+				University:
+				<p><%= book.user.university %></p>
+			</div>
+			<div class="condition">
+				<p>Condition:</p>
+				<%= book.condition %>
+			</div>
+			<div class="description">
+				<p>Description</p>
+				<%= book.description %>
+			</div>
+			<div class="buy">
+				<div class="btn btn-primary">Buy</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

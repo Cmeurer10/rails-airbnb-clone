@@ -22,6 +22,7 @@ class BooksController < ApplicationController
     titles.each do |title|
       @books << Book.all.where(title: title).to_a
     end
+    @universities = @books.uniq { |u| u.university }
     @books = @books.to_a.flatten.uniq(&:id)
   end
 
