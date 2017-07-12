@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   patch '/dashboard/:id', to: 'books#update'
   delete '/dashboard/:id', to: 'books#destroy'
   root to: 'pages#home'
+
+  resources :maps, only: [:index]
+
 end
