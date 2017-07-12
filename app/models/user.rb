@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   # Come back to validating university.  Maybe it is only nessicary if you are selling?
-  # validates :university, presence: true
+  # validates :university, presence: true   
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -36,8 +36,5 @@ class User < ApplicationRecord
 
     return user
   end
-
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
 
 end
