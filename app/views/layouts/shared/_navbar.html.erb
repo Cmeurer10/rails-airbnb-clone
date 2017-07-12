@@ -1,8 +1,9 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <%= link_to (image_tag "logo.png", {class: "navbar-wagon-brand", id: "logo"}), root_path %>
-
-
+  <div class="brand">
+    <%= link_to (image_tag "logo.png", {class: "navbar-wagon-brand", id: "logo"}), root_path %>
+    <p>BookTrader</p>
+  </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
@@ -10,7 +11,7 @@
     <div class="navbar-wagon-item">
       <% if current_user %>
         <!-- TODO: fix pathing for new book -->
-        <%= link_to "Sell your books", 'dashboard/new', class: "nav-link" %>
+        <%= link_to "Sell your books", dashboard_new_path, class: "nav-link" %>
       <% else %>
         <%= link_to "Sell your books", new_user_session_path, class: "nav-link" %>
       <% end %>
