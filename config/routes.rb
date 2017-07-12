@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   resources :books, except: [:show]
   get '/books/:title', to: 'books#show'
   root to: 'pages#home'
+
+  resources :maps, only: [:index]
+
 end
