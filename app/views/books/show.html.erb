@@ -1,4 +1,4 @@
-<div class="result">
+<div class="results">
 	<div class="row">
 		<div class="col-md-5 book-details">
 			<div class="cover">
@@ -72,20 +72,20 @@
   				<p>$<%= book.price %></p>
 			</div>
 			<div class="seller">
-				<p>Sold by:</p>
+				<p><strong>Sold by:</strong></p>
 				<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar" %>
 			</div>
 			<div class="university">
-				University:
+				<p><strong>University:</strong></p>
 				<p><%= book.user.university %></p>
 			</div>
 			<div class="condition">
-				<p>Condition:</p>
-				<%= book.condition %>
+				<p><strong>Condition:</strong></p>
+				<p><%= book.condition %></p>
 			</div>
 			<div class="description">
-				<p>Description</p>
-				<%= book.description %>
+				 <p><strong>Description:</strong></p>
+				<p><%= book.description.strip %><p>
 			</div>
 			<div class="buy">
 				<div class="btn btn-primary">Buy</div>
