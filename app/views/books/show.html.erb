@@ -17,7 +17,7 @@
 			<h2>Filters:</h2>
 		</div>
 		<div class="sidebar col-md-2  hidden-sm hidden-xs">
-				<%= form_tag books_path(:id), method: :get do -%>
+				<%= form_tag(url: "/books/list/#{params}", method: :get) do -%>
 	<!-- <div class="row">
 		<div class= "field">
 			<p>University:</p>
@@ -28,24 +28,24 @@
 	<div class="row">
 		<div class= "field">
 			<p>Edition:</p>
-			<%= select_tag :edition, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
-					@books.uniq(&:edition).sort_by(&:edition),
+			<%= select_tag :edition, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
+					@books.select(:edition).uniq(&:edition).sort_by(&:edition),
 					'edition', 'edition', params[:edition]) %>
 		</div>
 	</div>
 	<div class="row">
 		<div class= "field">
 			<p>Condition:</p>
-			<%= select_tag :condition, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
-					@books.uniq(&:condition).sort_by(&:condition),
+			<%= select_tag :condition, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
+					@books.select(:condition).uniq(&:condition).sort_by(&:condition),
 					'condition', 'condition', params[:condition]) %>
 		</div>
 	</div>
 	<div class="row">
 		<div class= "field">
 			<p>Subject:</p>
-			<%= select_tag :subject, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
-					@books.uniq(&:subject).sort_by(&:subject),
+			<%= select_tag :subject, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
+					@books.select(:subject).uniq(&:subject).sort_by(&:subject),
 					'subject', 'subject', params[:subject]) %>
 		</div>
 	</div>
