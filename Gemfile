@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'devise'
 gem 'omniauth-facebook'
+
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
@@ -24,6 +25,8 @@ gem "gmaps4rails"
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
+
+gem 'filterrific'
 
 group :development, :test do
   gem 'better_errors'

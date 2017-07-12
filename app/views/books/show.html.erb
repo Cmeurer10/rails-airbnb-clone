@@ -17,7 +17,52 @@
 			<h2>Filters:</h2>
 		</div>
 		<div class="sidebar col-md-2  hidden-sm hidden-xs">
-			<%= render "filter-sidebar" %>
+				<%= form_tag books_path(:id), method: :get do -%>
+	<!-- <div class="row">
+		<div class= "field">
+			<p>University:</p>
+			<%#= select_tag :university, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
+					@universities, 'university', 'university', params[:university]) %>
+		</div>
+	</div> -->
+	<div class="row">
+		<div class= "field">
+			<p>Edition:</p>
+			<%= select_tag :edition, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
+					@books.uniq(&:edition).sort_by(&:edition),
+					'edition', 'edition', params[:edition]) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class= "field">
+			<p>Condition:</p>
+			<%= select_tag :condition, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
+					@books.uniq(&:condition).sort_by(&:condition),
+					'condition', 'condition', params[:condition]) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class= "field">
+			<p>Subject:</p>
+			<%= select_tag :subject, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
+					@books.uniq(&:subject).sort_by(&:subject),
+					'subject', 'subject', params[:subject]) %>
+		</div>
+	</div>
+	<!-- <div class="row">
+		<div class= "field">
+			<p>Price:</p>
+			<%#= select_tag :price, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
+			@books.uniq(&:price).sort_by(&:price), 'price', 'price', params[:price]) %>
+		</div>
+	</div> -->
+	<div class="row">
+		<div class="field filter">
+		    <%= hidden_field_tag :title, @title %>
+		    <%= submit_tag 'Filter' %>
+		</div>
+	</div>
+<% end %>
 		</div>
 	</div>
 	<div class="row">
