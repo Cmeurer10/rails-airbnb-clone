@@ -5,25 +5,27 @@ class BooksController < ApplicationController
   # GET /books.json
   # To be shown on search pages
   def index
-    @books = Book.all.to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
-    @universities = @books.uniq { |u| u.university }
+    @books = Book.search(params)
+    @title = params[:title]
   end
 
   # GET /books/1
   # GET /books/1.json
   # To be used on an individual book's page
   def show
-    param_title = params[:title].gsub('_', '').downcase
-    titles = Book.all.select(:title).select do |book|
-      book[:title].downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') == param_title
-    end
-    titles = titles.map(&:title)
-    @books = []
-    titles.each do |title|
-      @books << Book.all.where(title: title).to_a
-    end
-    @universities = @books.uniq { |u| u.university }
-    @books = @books.to_a.flatten.uniq(&:id)
+    # param_title = params[:title].gsub('_', '').downcase
+    # titles = Book.all.select(:title).select do |book|
+    #   book[:title].downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') == param_title
+    # end
+    # titles = titles.map(&:title)
+    # @books = []
+    # titles.each do |title|
+    #   @books << Book.all.where(title: title).to_a
+    # end
+    # @books = @books.to_a.flatten.uniq(&:id)
+    # @universities = @books.uniq { |u| u.university }
+    @books = Book.search(params)
+    @title = params[:title]
   end
 
   # GET /books/new
@@ -88,6 +90,28 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+    def search
+      @valid_params = {}
+      params.each do |key, value|
+         # @valid_params.store(key, value) unless value.empty?
+         case key
+         when "title"
+           @valid_params[key] = value unless value.empty?
+         when "condition"
+           @valid_params[key] = value unless value.empty?
+          when "price"
+          @valid_params[key] = value unless value.empty?
+          when "edition"
+          @valid_params[key] = value unless value.empty?
+          when "university"
+          @valid_params[key] = value unless value.empty?
+          when "subject"
+          @valid_params[key] = value unless value.empty?
+         end
+      end
+      @valid_params
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.

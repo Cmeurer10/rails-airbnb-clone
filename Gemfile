@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'filterrific'
 
 group :development, :test do
   gem 'better_errors'
