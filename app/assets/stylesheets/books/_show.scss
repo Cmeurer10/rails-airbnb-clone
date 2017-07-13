@@ -3,11 +3,13 @@
 	margin: 20px 0 20px 20px;
 	border: 1px solid black;
 	border-radius: 25px;
+	box-shadow: 2px 2px 2px #636363;
 
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 	flex-wrap: warp;
+	background-color: white;
 
 }
 .book-details{
@@ -34,5 +36,14 @@
 	display: inline-block;
 }
 .condition p{
-	display: inline-block;
+	margin-bottom: 0;
+	padding: 3px;
+}
+.university p{
+	padding: 3px;
+	margin-bottom: 0;
+}
+.description p{
+	padding: 3px;
+	margin-bottom: 0;
 }

@@ -1,4 +1,4 @@
-<div class="result">
+<div class="results">
 	<div class="row">
 		<div class="col-md-5 book-details">
 			<div class="cover">
@@ -17,7 +17,7 @@
 			<h2>Filters:</h2>
 		</div>
 		<div class="sidebar col-md-2  hidden-sm hidden-xs">
-				<%= form_tag books_path(:id), method: :get do -%>
+				<%= form_tag(url: "/books/list/#{params}", method: :get) do -%>
 	<!-- <div class="row">
 		<div class= "field">
 			<p>University:</p>
@@ -28,24 +28,24 @@
 	<div class="row">
 		<div class= "field">
 			<p>Edition:</p>
-			<%= select_tag :edition, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
-					@books.uniq(&:edition).sort_by(&:edition),
+			<%= select_tag :edition, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
+					@books.select(:edition).uniq(&:edition).sort_by(&:edition),
 					'edition', 'edition', params[:edition]) %>
 		</div>
 	</div>
 	<div class="row">
 		<div class= "field">
 			<p>Condition:</p>
-			<%= select_tag :condition, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
-					@books.uniq(&:condition).sort_by(&:condition),
+			<%= select_tag :condition, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
+					@books.select(:condition).uniq(&:condition).sort_by(&:condition),
 					'condition', 'condition', params[:condition]) %>
 		</div>
 	</div>
 	<div class="row">
 		<div class= "field">
 			<p>Subject:</p>
-			<%= select_tag :subject, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
-					@books.uniq(&:subject).sort_by(&:subject),
+			<%= select_tag :subject, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
+					@books.select(:subject).uniq(&:subject).sort_by(&:subject),
 					'subject', 'subject', params[:subject]) %>
 		</div>
 	</div>
@@ -72,20 +72,20 @@
   				<p>$<%= book.price %></p>
 			</div>
 			<div class="seller">
-				<p>Sold by:</p>
+				<p><strong>Sold by:</strong></p>
 				<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar" %>
 			</div>
 			<div class="university">
-				University:
+				<p><strong>University:</strong></p>
 				<p><%= book.user.university %></p>
 			</div>
 			<div class="condition">
-				<p>Condition:</p>
-				<%= book.condition %>
+				<p><strong>Condition:</strong></p>
+				<p><%= book.condition %></p>
 			</div>
 			<div class="description">
-				<p>Description</p>
-				<%= book.description %>
+				 <p><strong>Description:</strong></p>
+				<p><%= book.description.strip %><p>
 			</div>
 			<div class="buy">
 				<div class="btn btn-primary">Buy</div>
