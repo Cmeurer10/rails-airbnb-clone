@@ -69,9 +69,8 @@
 						<p><strong>Condition:</strong></p>
 						<p><%= book.condition %></p>
 					</div>
-					<div class="description">
-				 		<p><strong>Description:</strong></p>
-						<p><%= book.description.strip %></p>
+					<div class="subject">
+						<p><%= book.subject %></p>
 					</div>
 					<div class="buy">
 						<%= link_to purchases_path(id: book.id), method: :post do %>
