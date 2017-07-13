@@ -2,8 +2,6 @@ class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:dashboard]
 
   def home
-  	@user = current_user
-  	@purchases = @user.purchases if current_user
   end
 
   def dashboard
