@@ -2,3 +2,14 @@ $list-book-picture-height: 45%;
 $avatar-width: 30px; 
 $avatar-large-width: 50px;
 $form-margin: 30px;
+
+@mixin box-shadow($vert, $horiz, $blur, $color) {
+  -webkit-box-shadow: $vert $horiz $blur $color;
+     -moz-box-shadow: $vert $horiz $blur $color;
+      -ms-box-shadow: $vert $horiz $blur $color;
+          box-shadow: $vert $horiz $blur $color;
+} 
+@mixin default-box-shadow{
+	@include box-shadow(4px, 10px, 20px, #BEBEBE); 
+
+}
