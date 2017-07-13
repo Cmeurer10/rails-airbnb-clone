@@ -13,60 +13,59 @@
 			<h2>Filters:</h2>
 		</div>
 		<div class="sidebar col-md-2  hidden-sm hidden-xs">
-				<%= form_tag(url: "/books/list/#{params}", method: :get) do -%>
-	<!-- <div class="row">
-		<div class= "field">
-			<p>University:</p>
-			<%#= select_tag :university, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
-					@universities, 'university', 'university', params[:university]) %>
-		</div>
-	</div> -->
-	<div class="row">
-		<div class= "field">
-			<p>Edition:</p>
-			<%= select_tag :edition, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
-					@books.select(:edition).uniq(&:edition).sort_by(&:edition),
-					'edition', 'edition', params[:edition]) %>
-		</div>
-	</div>
-	<div class="row">
-		<div class= "field">
-			<p>Condition:</p>
-			<%= select_tag :condition, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
-					@books.select(:condition).uniq(&:condition).sort_by(&:condition),
-					'condition', 'condition', params[:condition]) %>
-		</div>
-	</div>
-	<div class="row">
-		<div class= "field">
-			<p>Subject:</p>
-			<%= select_tag :subject, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
-					@books.select(:subject).uniq(&:subject).sort_by(&:subject),
-					'subject', 'subject', params[:subject]) %>
-		</div>
-	</div>
-	<!-- <div class="row">
-		<div class= "field">
-			<p>Price:</p>
-			<%#= select_tag :price, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
-			@books.uniq(&:price).sort_by(&:price), 'price', 'price', params[:price]) %>
-		</div>
-	</div> -->
-	<div class="row">
-		<div class="field filter">
-		    <%= hidden_field_tag :title, @title %>
-		    <%= submit_tag 'Filter' %>
-		</div>
-	</div>
-<% end %>
+			<%= form_tag(url: "/books/list/#{params}", method: :get) do -%>
+				<!-- <div class="row">
+					<div class= "field">
+						<p>University:</p>
+						<%#= select_tag :university, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
+								@universities, 'university', 'university', params[:university]) %>
+					</div>
+				</div>  -->
+				<div class="row">
+					<div class= "field">
+						<p>Edition:</p>
+						<%= select_tag :edition, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
+								@books.select(:edition).uniq(&:edition).sort_by(&:edition),
+								'edition', 'edition', params[:edition]) %>
+					</div>
+				</div>
+				<div class="row">
+					<div class= "field">
+						<p>Condition:</p>
+						<%= select_tag :condition, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
+								@books.select(:condition).uniq(&:condition).sort_by(&:condition),
+								'condition', 'condition', params[:condition]) %>
+					</div>
+				</div>
+				<div class="row">
+					<div class= "field">
+						<p>Subject:</p>
+						<%= select_tag :subject, content_tag(:option,'Any',:value=>"")+options_from_collection_for_select(
+								@books.select(:subject).uniq(&:subject).sort_by(&:subject),
+								'subject', 'subject', params[:subject]) %>
+					</div>
+				</div>
+				<!-- <div class="row">
+					<div class= "field">
+						<p>Price:</p>
+						<%#= select_tag :price, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
+						@books.uniq(&:price).sort_by(&:price), 'price', 'price', params[:price]) %>
+					</div>
+				</div> -->
+				<div class="row">
+					<div class="field filter">
+					    <%= hidden_field_tag :title, @title %>
+					    <%= submit_tag 'Filter' %>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	</div>
 	<div class="row">
 		<% @books.each do |book| %>
-		<div class="col-xs-12 col-md-3 list-card">
+		<div class="col-xs-12 col-md-2 list-card">
 			<div class="list-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-			 url(<%= image_path "100x100.png" || book.cover
-			  %>);"></div>
+			 url(<%= cl_image_tag book.cover_photo || image_path "100x100.png"  %>);"></div>
 			<div class="avatar-container">
 				<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar avatar-large" %>
 			</div>
@@ -89,14 +88,15 @@
 			</div>
 			<div class="description">
 				 <p><strong>Description:</strong></p>
-				<p><%= book.description.strip %><p>
+				<p><%= book.description.strip %></p>
 			</div>
 			<div class="buy">
-
 				<%= link_to purchases_path(id: book.id), method: :post do %>
-					<div class="btn btn-primary">Add to Cart</div>
+					<div class="btn btn-primary checkout">Add to Cart</div>
 				<% end %>
 			</div>
+		  </div>
+		  </div>
 		<% end %>
 	</div>
 </div>
