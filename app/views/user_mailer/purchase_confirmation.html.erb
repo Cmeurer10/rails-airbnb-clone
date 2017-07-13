@@ -4,7 +4,7 @@
     <% @purchases.each do |purchase| %>
       <li>
         <%= purchase.book.title %>,
-        from <%= purchase.user.full_name %>        
+        from <%= purchase.book.user.full_name %>        
       </li>
     <% end %>
   </ul>

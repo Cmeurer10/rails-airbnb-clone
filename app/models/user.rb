@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :nullify
   has_many :purchases, dependent: :nullify
-  has_many :books_purchased, through: :purchases, source: :book
+  has_many :books_purchased, through: :purchases, source: :book, dependent: :nullify
   validates :email, presence: true
   validates_format_of :email,:with => Devise::email_regexp
   validates :password, presence: true, length: { in: 6..20 }

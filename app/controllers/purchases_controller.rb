@@ -29,7 +29,7 @@ class PurchasesController < ApplicationController
       purchase.finalized = true
       purchase.save
     end
-    UserMailer.purchase_confirmation(current_user, @purchases)
+    UserMailer.purchase_confirmation(current_user, @purchases).deliver_now
     redirect_to dashboard_path
   end
 end
