@@ -5,9 +5,14 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome.subject
   #
-  def welcome
-    @greeting = "Hi"
+  def welcome(user)
+    @user = user
+    mail(to: @user.email, subject: "Welcome to BookTrader!")
+  end
 
-    mail to: "to@example.org"
+  def purchase_confirmation(user, purchases)
+    @user = user
+    @purchases = purchases
+    mail(to: @user.email, subject: "Purchase Confirmation")
   end
 end

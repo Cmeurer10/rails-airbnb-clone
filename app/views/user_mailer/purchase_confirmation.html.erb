@@ -1,0 +1,12 @@
+<p>Hello, <%= @user.full_name %>,
+  <p>You purchased:</p>
+  <ul>
+    <% @purchases.each do |purchase| %>
+      <li>
+        <%= purchase.book.title %>,
+        from <%= purchase.user.full_name %>        
+      </li>
+    <% end %>
+  </ul>
+  <p>Thank you for your purchase! Enjoy your books!</p>
+</p>
