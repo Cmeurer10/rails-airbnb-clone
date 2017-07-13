@@ -1,16 +1,13 @@
 <div class="results">
 	<div class="row">
-		<div class="col-md-5 book-details">
-			<div class="details">
+		<div class="col-md-10 book-details">
+			<div class="details text-center">
 				<ul>
-					<li class="title"><%= @books[0].title %></li>
+					<li class="title"><%= @books[0].title.capitalize %></li>
 					<li class="other"><%= @books[0].publisher %></li>
 					<li class="other">ISBN:<%= @books[0].isbn %></li>
 				</ul>
 			</div>
-		</div>
-		<div class="col-md-5">
-			<h2>Filters:</h2>
 		</div>
 		<div class="sidebar col-md-2  hidden-sm hidden-xs">
 			<%= form_tag(url: "/books/list/#{params}", method: :get) do -%>
@@ -49,7 +46,7 @@
 	</div>
 	<div class="row">
 		<% @books.each do |book| %>
-		<div class="col-xs-12 col-md-2 list-card">
+		<div class="col-xs-12 col-sm-6 col-md-2 list-card">
 			<div class="list-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
 			 url('<%= cl_image_path book.cover_photo, :default_image => "default_image.png" %>')";></div>
 			<div class="avatar-container">
@@ -62,6 +59,7 @@
 				<div class="subject">
 					<p><%= book.subject %></p>
 				</div>
+			</div>
 		  	<div class="book-details">
 					<div class="university">
 						<p><strong>University:</strong></p>
@@ -82,7 +80,7 @@
 						<% end %>
 					</div>
 		  	</div>
-		  </div>
+		</div>
 		<% end %>
 	</div>
 </div>
