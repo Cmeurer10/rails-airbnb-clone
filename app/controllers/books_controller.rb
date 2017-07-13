@@ -24,10 +24,10 @@ class BooksController < ApplicationController
       @books << Book.all.where(title: title).to_a
     end
     @books = @books.to_a.flatten.uniq(&:id)
-    @universities = @books.uniq { |u| u.university }
+    @universities = @books.uniq(&:university)
     @books = Book.search(params)
     @title = params[:title]
-
+    @books = @books.where(sold: false)
   end
 
   # GET /books/new

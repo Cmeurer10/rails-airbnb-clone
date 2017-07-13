@@ -27,6 +27,8 @@ class PurchasesController < ApplicationController
     @purchases = current_user.purchases.where(finalized: false)
     @purchases.each do |purchase|
       purchase.finalized = true
+      purchase.book.sold = true
+      purchase.book.save
       purchase.save
     end
     UserMailer.purchase_confirmation(current_user, @purchases).deliver_now

@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20170713025103) do
     t.string   "description"
     t.string   "publisher"
     t.string   "isbn"
-    t.boolean  "sold"
+    t.boolean  "sold",        default: false
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["user_id"], name: "index_books_on_user_id", using: :btree
   end
 
@@ -64,8 +64,6 @@ ActiveRecord::Schema.define(version: 20170713025103) do
     t.string   "facebook_picture_url"
     t.string   "token"
     t.datetime "token_expiry"
-    t.float    "latitude"
-    t.float    "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
