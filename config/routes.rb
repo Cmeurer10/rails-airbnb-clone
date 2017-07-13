@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   patch '/dashboard/:id', to: 'books#update'
   delete '/dashboard/:id', to: 'books#destroy'
   root to: 'pages#home'
+  mount Attachinary::Engine => "/attachinary"
+
 end
