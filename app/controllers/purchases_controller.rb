@@ -15,5 +15,8 @@ class PurchasesController < ApplicationController
   end
 
   def destroy
+    purchase = Purchase.find(params[:id])
+    purchase.destroy if current_user == purchase.user
+    redirect_to cart_path
   end
 end

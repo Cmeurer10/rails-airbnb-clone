@@ -2,5 +2,7 @@
 <% @purchases.each do |purchase| %>
   <p>
     <%= purchase.book.title %>
+    <%= link_to "Remove from cart", purchase_path(purchase.id), method: :delete,
+        data: {confirm: "Remove this from your cart?"} %>
   </p>
 <% end %>
