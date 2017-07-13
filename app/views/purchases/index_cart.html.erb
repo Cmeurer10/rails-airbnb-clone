@@ -1,0 +1,12 @@
+<h2>In Your Cart:</h2>
+<% @purchases.each do |purchase| %>
+  <p>
+    <%= purchase.book.title %>
+    <%= link_to "Remove from cart", purchase_path(purchase.id), method: :delete,
+        data: {confirm: "Remove this from your cart?"} %>
+  </p>
+<% end %>
+<p>Total: $<%= @total %></p>
+<p><%= link_to "Continue shopping", root_path %></p>
+<p><%= link_to "Confirm purchase and checkout", cart_checkout_path,
+        data: {confirm: "Purchase all books for $#{@total}?"} %></p>
