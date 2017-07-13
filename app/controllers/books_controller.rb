@@ -5,7 +5,7 @@ class BooksController < ApplicationController
   # GET /books.json
   # To be shown on search pages
   def index
-    @books = Book.search(params).to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
+    @books = Book.search(params).where(sold: false).to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
     @title = params[:title]
   end
 

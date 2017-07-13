@@ -49,40 +49,40 @@
 	</div>
 	<div class="row">
 		<% @books.each do |book| %>
-		<div class="col-xs-12 col-md-2 list-card">
-			<div class="list-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-			 url('<%= cl_image_path book.cover_photo, :default_image => "default_image.png" %>')";></div>
-			<div class="avatar-container">
-				<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar avatar-large" %>
+			<div class="col-xs-12 col-md-2 list-card">
+				<div class="list-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+				 url('<%= cl_image_path book.cover_photo, :default_image => "default_image.png" %>')";></div>
+				<div class="avatar-container">
+					<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar avatar-large" %>
+				</div>
+				<div class="book-info">
+					<div class="price">
+		  				<p>$<%= book.price %></p>
+					</div>
+					<div class="subject">
+						<p><%= book.subject %></p>
+					</div>
+			  	<div class="book-details">
+						<div class="university">
+							<p><strong>University:</strong></p>
+							<p><%= book.user.university %></p>
+						</div>
+						<div class="condition">
+							<p><strong>Condition:</strong></p>
+							<p><%= book.condition %></p>
+						</div>
+						<div class="description">
+					 		<p><strong>Description:</strong></p>
+							<p><%= book.description.strip %></p>
+						</div>
+						<div class="buy">
+							<%= link_to purchases_path(id: book.id), method: :post do %>
+								<div class="btn btn-primary checkout">Add to Cart</div>
+							<% end %>
+						</div>
+			  	</div>
+			  </div>
 			</div>
-			<div class="book-info">
-				<div class="price">
-	  				<p>$<%= book.price %></p>
-				</div>
-				<div class="subject">
-					<p><%= book.subject %></p>
-				</div>
-		  	<div class="book-details">
-					<div class="university">
-						<p><strong>University:</strong></p>
-						<p><%= book.user.university %></p>
-					</div>
-					<div class="condition">
-						<p><strong>Condition:</strong></p>
-						<p><%= book.condition %></p>
-					</div>
-					<div class="description">
-				 		<p><strong>Description:</strong></p>
-						<p><%= book.description.strip %></p>
-					</div>
-					<div class="buy">
-						<%= link_to purchases_path(id: book.id), method: :post do %>
-							<div class="btn btn-primary checkout">Add to Cart
-							</div>
-						<% end %>
-					</div>
-		  	</div>
-		  </div>
 		<% end %>
 	</div>
 </div>
