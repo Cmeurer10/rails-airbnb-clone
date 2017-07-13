@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
+
   def index_cart
     @purchases = Purchase.all.where(user: current_user).where(finalized: false)
     @total = @purchases.map { |pur| pur.book.price.to_i }.reduce(&:+)
@@ -26,8 +27,11 @@ class PurchasesController < ApplicationController
     @purchases = current_user.purchases.where(finalized: false)
     @purchases.each do |purchase|
       purchase.finalized = true
+      purchase.book.sold = true
+      purchase.book.save
       purchase.save
     end
+    UserMailer.purchase_confirmation(current_user, @purchases).deliver_now
     redirect_to dashboard_path
   end
 end
