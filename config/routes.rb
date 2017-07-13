@@ -25,5 +25,6 @@ Rails.application.routes.draw do
   delete '/dashboard/:id', to: 'books#destroy'
   resources :purchases, path: "cart", only: [:create, :destroy]
   get '/cart', to: 'purchases#index_cart'
+  get 'cart/checkout', to: 'purchases#finalize'
   root to: 'pages#home'
 end

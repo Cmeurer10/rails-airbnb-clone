@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   def index_cart
     @purchases = Purchase.all.where(user: current_user).where(finalized: false)
+    @total = @purchases.map { |pur| pur.book.price.to_i }.reduce(&:+)
   end
 
   def index_dashboard
@@ -18,5 +19,14 @@ class PurchasesController < ApplicationController
     purchase = Purchase.find(params[:id])
     purchase.destroy if current_user == purchase.user
     redirect_to cart_path
+  end
+
+  def finalize
+    @purchases = current_user.purchases.where(finalized: false)
+    @purchases.each do |purchase|
+      purchase.finalized = true
+      purchase.save
+    end
+    redirect_to dashboard_path
   end
 end

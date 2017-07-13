@@ -6,3 +6,7 @@
         data: {confirm: "Remove this from your cart?"} %>
   </p>
 <% end %>
+<p>Total: $<%= @total %></p>
+<p><%= link_to "Continue shopping", root_path %></p>
+<p><%= link_to "Confirm purchase and checkout", cart_checkout_path,
+        data: {confirm: "Purchase all books for $#{@total}?"} %></p>
