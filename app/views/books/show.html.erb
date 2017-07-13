@@ -65,7 +65,7 @@
 		<% @books.each do |book| %>
 		<div class="col-xs-12 col-md-2 list-card">
 			<div class="list-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-			 url(<%= cl_image_tag book.cover_photo || image_path "100x100.png"  %>);"></div>
+			 url('<%= cl_image_path book.cover_photo, :default_image => "default_image.png" %>')";></div>
 			<div class="avatar-container">
 				<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar avatar-large" %>
 			</div>
