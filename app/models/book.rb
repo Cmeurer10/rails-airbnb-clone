@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   has_one :purchase, dependent: :nullify
   belongs_to :user
-  has_one :buyer, through: :purchase, source: :user
+  has_one :buyer, through: :purchase, source: :user, dependent: :nullify
   validates :title, presence: true
   validates :edition, presence: true
   validates :condition, presence: true, inclusion: { in: ['Good', 'Like New', 'Poor', 'Fair'] }

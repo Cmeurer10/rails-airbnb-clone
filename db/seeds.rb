@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Purchase.destroy_all
+
 #users
 User.destroy_all
 
@@ -58,7 +60,7 @@ purchases << Purchase.new({"dialogue"=>"Do you want to make an exchange next Mon
 purchases << Purchase.new({"dialogue"=>"I am in need of this book, please contact me at 123-123-234, thanks!"})
 
 purchases.each do |purchase|
-  purchase.book = books.sample
+  purchase.book = books.reject(&:sold?).sample
   purchase.user = users.reject { |user| purchase.book.user }.sample
   purchase.save
 end
