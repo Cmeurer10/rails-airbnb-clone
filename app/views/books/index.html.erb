@@ -10,7 +10,7 @@
             <% title = book.title.strip.gsub(/[[:punct:]]/, ' ').split.map(&:capitalize).join(' ') %>
             <%= link_to "/books/list/#{title.gsub(' ', '_')}", method: 'get' do %>
               <div class="book-card">
-                <div class="card-book-picture"><%= image_tag "100x100.png" %></div>
+                <div class="card-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path "100x100.png" %>);"></div>
                 <div class="card-description">
                   <h2><%= title %></h2>
                   <p><%= book.publisher %></p>

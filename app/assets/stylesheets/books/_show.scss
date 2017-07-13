@@ -1,23 +1,36 @@
+
+
 .list-card{
-	height: 10%;
+	height: 600px;
 	margin: 20px 0 20px 20px;
-	border: 1px solid black;
-	border-radius: 25px;
+	border-radius: 7px;
 	box-shadow: 2px 2px 2px #636363;
-
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	flex-wrap: warp;
 	background-color: white;
+	padding-left: 0px;
+	padding-right: 0px; 
+	position: relative;
+	overflow: hidden;
 
+
+}
+.list-book-picture{
+  height: $list-book-picture-height;
+  background-size: cover !important;
+  padding-left: 0;
+  padding-right: 0; 
 }
 .book-details{
 	display: flex;
 	justify-content: space-around;
+	flex-direction: column;
 	margin: 15px 0; 
-	border-bottom: 2px solid black;
-	height: 400px;
+}
+.book-info{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	margin: 15px; 
+
 }
 .book-details ul{
 	list-style: none;
@@ -32,9 +45,12 @@
 .other{
 	padding: 15px 0px;
 }
-.seller p{
-	display: inline-block;
+.avatar-container{
+	position: absolute;
+	top: calc(#{$list-book-picture-height} - #{$avatar-large-width / 2});
+	left: calc(50% - #{$avatar-large-width / 2});
 }
+
 .condition p{
 	margin-bottom: 0;
 	padding: 3px;
@@ -46,4 +62,10 @@
 .description p{
 	padding: 3px;
 	margin-bottom: 0;
+}
+.checkout{
+	width: 100%;
+	text-align: center;
+	position: absolute;
+	bottom: 0px;
 }

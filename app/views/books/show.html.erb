@@ -1,10 +1,6 @@
 <div class="results">
 	<div class="row">
 		<div class="col-md-5 book-details">
-			<div class="cover">
-			<!-- @books[0].cover, {class: "book-cover", id: "cover"} || -->
-				<%= image_tag "100x100.png" %>
-			</div>
 			<div class="details">
 				<ul>
 					<li class="title"><%= @books[0].title %></li>
@@ -67,14 +63,22 @@
 	</div>
 	<div class="row">
 		<% @books.each do |book| %>
-		<div class="col-md-10 list-card">
-			<div class="price">
-  				<p>$<%= book.price %></p>
+		<div class="col-xs-12 col-md-3 list-card">
+			<div class="list-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+			 url(<%= image_path "100x100.png" || book.cover
+			  %>);"></div>
+			<div class="avatar-container">
+				<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar avatar-large" %>
 			</div>
-			<div class="seller">
-				<p><strong>Sold by:</strong></p>
-				<%= image_tag book.user.facebook_picture_url || "100x100.png", class: "avatar" %>
+			<div class="book-info">
+				<div class="price">
+	  				<p>$<%= book.price %></p>
+				</div>
+				<div class="subject">
+					<p><%= book.subject %></p>
+				</div>
 			</div>
+		  <div class="book-details">
 			<div class="university">
 				<p><strong>University:</strong></p>
 				<p><%= book.user.university %></p>
@@ -88,11 +92,11 @@
 				<p><%= book.description.strip %><p>
 			</div>
 			<div class="buy">
+
 				<%= link_to purchases_path(id: book.id), method: :post do %>
-					<div class="btn btn-primary">Buy</div>
+					<div class="btn btn-primary">Add to Cart</div>
 				<% end %>
 			</div>
-		</div>
 		<% end %>
 	</div>
 </div>
