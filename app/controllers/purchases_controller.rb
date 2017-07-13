@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_cart
 
   def index_cart
     @purchases = Purchase.all.where(user: current_user).where(finalized: false)
@@ -33,5 +34,10 @@ class PurchasesController < ApplicationController
     end
     UserMailer.purchase_confirmation(current_user, @purchases).deliver_now
     redirect_to dashboard_path
+  end
+
+  def set_cart
+    @user = current_user
+    @purchases = @user.purchases if current_user
   end
 end
