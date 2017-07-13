@@ -1,14 +1,4 @@
 Rails.application.routes.draw do
-  get 'purchases/index'
-
-  get 'purchases/show'
-
-  get 'purchases/new'
-
-  get 'purchases/create'
-
-  get 'purchases/destroy'
-
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
