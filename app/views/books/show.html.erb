@@ -14,10 +14,10 @@
 		</div>
 		<div class="sidebar col-md-2  hidden-sm hidden-xs">
 			<%= form_tag(url: "/books/list/#{params}", method: :get) do -%>
-		<!-- 		<div class="row">
+				<!-- <div class="row">
 					<div class= "field">
 						<p>University:</p>
-						<%= select_tag :university, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
+						<%#= select_tag :university, content_tag(:option,'select one...',:value=>"")+options_from_collection_for_select(
 								@universities, 'university', 'university', params[:university]) %>
 					</div>
 				</div>  -->

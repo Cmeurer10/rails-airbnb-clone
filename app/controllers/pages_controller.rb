@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   def home
+  	@user = current_user
+  	@purchases = @user.purchases
   end
 
   def dashboard
