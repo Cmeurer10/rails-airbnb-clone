@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
   def index_cart
     @purchases = Purchase.all.where(user: current_user).where(finalized: false)
     @total = @purchases.map { |pur| pur.book.price.to_i }.reduce(&:+)
