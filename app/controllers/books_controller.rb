@@ -7,6 +7,8 @@ class BooksController < ApplicationController
   def index
     @books = Book.search(params).to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
     @title = params[:title]
+    @user = current_user
+    @purchases = @user.purchases
 
   end
 
@@ -28,15 +30,21 @@ class BooksController < ApplicationController
     @books = Book.search(params)
     @title = params[:title]
     @books = @books.where(sold: false)
+    @user = current_user
+    @purchases = @user.purchases
   end
 
   # GET /books/new
   def new
     @book = Book.new
+    @user = current_user
+    @purchases = @user.purchases
   end
 
   # GET /books/1/edit
   def edit
+    @user = current_user
+    @purchases = @user.purchases
   end
 
   # POST /books
@@ -102,6 +110,6 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :edition, :condition, :price, :subject,
-                                    :description, :publisher, :isbn)
+                                    :description, :publisher, :isbn, :photo, :photo_cache)
     end
 end

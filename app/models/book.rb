@@ -9,7 +9,17 @@ class Book < ApplicationRecord
   validates :subject, presence: true
   validates :publisher, presence: true
   # validates :isbn, presence: true
+  mount_uploader :photo, PhotoUploader
+  has_attachment :photo
 
+
+  def cover_photo
+    if self.photo.present?
+      self.photo.path
+    else
+      "book_upload_xidpjv"
+    end
+  end
 
   def sold?
     !buyer.nil?

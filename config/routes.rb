@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get '/cart', to: 'purchases#index_cart'
   get 'cart/checkout', to: 'purchases#finalize'
   root to: 'pages#home'
+  mount Attachinary::Engine => "/attachinary"
+
 end
