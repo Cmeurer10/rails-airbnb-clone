@@ -92,10 +92,10 @@
 				<p><%= book.description.strip %><p>
 			</div>
 			<div class="buy">
-				<div class="btn btn-primary checkout">Add to Cart</div>
-			</div>
-			  	
-			  </div>
+
+				<%= link_to purchases_path(id: book.id), method: :post do %>
+					<div class="btn btn-primary">Add to Cart</div>
+				<% end %>
 			</div>
 		<% end %>
 	</div>
