@@ -5,4 +5,8 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
   end
+
+  def checkout
+    @user = current_user
+  end
 end

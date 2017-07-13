@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   get '/dashboard/update/:id', to: 'books#edit'
   patch '/dashboard/:id', to: 'books#update'
   delete '/dashboard/:id', to: 'books#destroy'
+  get '/cart', to: 'pages#checkout'
+  post '/cart', to: 'pages#purchase'
   root to: 'pages#home'
 end
