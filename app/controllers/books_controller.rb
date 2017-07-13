@@ -7,6 +7,8 @@ class BooksController < ApplicationController
   def index
     @books = Book.search(params).to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
     @title = params[:title]
+    @user = current_user
+    @purchases = @user.purchases
 
   end
 
@@ -27,16 +29,22 @@ class BooksController < ApplicationController
     @universities = @books.uniq { |u| u.university }
     @books = Book.search(params)
     @title = params[:title]
+    @user = current_user
+    @purchases = @user.purchases
 
   end
 
   # GET /books/new
   def new
     @book = Book.new
+    @user = current_user
+    @purchases = @user.purchases
   end
 
   # GET /books/1/edit
   def edit
+    @user = current_user
+    @purchases = @user.purchases
   end
 
   # POST /books

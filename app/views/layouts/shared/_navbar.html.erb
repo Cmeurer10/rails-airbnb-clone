@@ -10,7 +10,6 @@
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <% if current_user %>
-        <!-- TODO: fix pathing for new book -->
         <%= link_to "Sell your books", dashboard_new_path, class: "nav-link" %>
       <% else %>
         <%= link_to "Sell your books", new_user_session_path, class: "nav-link" %>
@@ -22,7 +21,14 @@
           <%=  image_tag current_user.facebook_picture_url || "Welcome #{current_user.first_name}", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': 'dropdown'  %>
           <ul class= "dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li><%= link_to "Dashboard", dashboard_path %></li>
-            <li><%= link_to "LogOut", destroy_user_session_path %></li>
+            <li><%= link_to cart_path do %>
+              <div class="cart-container">
+                <p>Cart</p>
+                <%= @purchases.length if @purchases.length >= 1 %>
+              </div>
+              <% end %>
+            </li>
+            <li><%= link_to "Log Out", destroy_user_session_path %></li>
           </ul>
       </div>
      </div>

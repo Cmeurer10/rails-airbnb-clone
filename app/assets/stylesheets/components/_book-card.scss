@@ -1,25 +1,25 @@
 .book-card {
-  height: 200px;
+  height: 400px;
   // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   // background-color: #E8E8E8;
   // background-color: #F6EFEE;
   background-color: white;
-  box-shadow: 2px 2px 3px #636363;
+  box-shadow: 4px 10px 20px #BEBEBE;
   background-size: cover !important;
   color: black;
   display: flex;
   flex-direction: column;
   margin: 10px;
-  justify-content: center;
-  align-content: space-around;
+  // justify-content: center;
+  align-content: space-between;
   text-align: center;
+  width: 70%;
 }
-// .card-book-picture {
-//   bottom: 20px;
-//   left: 20px;
-//   width: 100px;
-//   height: 100px;
-// }
+.card-book-picture {
+  height:300px;
+  background-size: cover !important;
+  background-position: center;
+}
 // .card-user {
 //   right: 20px;
 //   top: 20px;

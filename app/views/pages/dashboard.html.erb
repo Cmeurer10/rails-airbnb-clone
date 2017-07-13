@@ -1,27 +1,41 @@
 <!-- TODO: Dummy display, replace with corret -->
 
-<% delete_message = "Are you sure? This will remove the book from your dashboard as well."  %>
-
-<div class="container">
-  <h2>You are selling:</h2>
-      <div class="row">
-      <div class="col-md-10 col-xs-12 selling">
-        <% @user.books.each do |book| %>
-          <div class="col-xs-6 col-sm-4">
-          <% title = book.title.strip.gsub(/[[:punct:]]/, ' ').split.map(&:capitalize).join(' ') %>
-          <%= link_to "/books/#{title.gsub(' ', '_')}", method: 'get' do %>
-            <div class="book-card">
-              <div class="card-book-picture"><%= image_tag "100x100.png" %></div>
-              <div class="card-description">
-                <h2><%= title %></h2>
-                <p><%= link_to "Edit this book", "dashboard/update/#{book.id}" %></p>
-                <p><%= link_to "Remove from store", "dashboard/#{book.id}",
-                                method: :delete, data: { confirm: delete_message } %></p>
-             </div>
+<div class="results">
+  <div class="user-items-container">
+    <h2>You are selling:</h2>
+        <div class="row">
+          <% @user.books.each do |book| %>
+            <div class="col-xs-12 col-sm-3">
+              <div class="book-card">
+                <div class="card-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url(<%= cl_image_tag book.cover_photo || image_path "100x100.png"  %>);"></div>
+                <div class="card-description">
+                  <h2><%= book.title %></h2>
+                  <p><%= link_to "Edit this book", "dashboard/update/#{book.id}" %></p>
+                  <p><%= link_to "Remove from store", "dashboard/#{book.id}",
+                                  method: :delete, data: { confirm: @delete_message } %></p>
+               </div>
+              </div>
             </div>
           <% end %>
-          </div>
-        <% end %>
-      </div>
-   </div>
+        </div>
+     </div>
+  <div class="user-items-container">
+    <h2>You bought:</h2>
+        <div class="row">
+          <% @books_purchased.each do |book| %>
+            <div class="col-xs-12 col-sm-3">
+              <div class="book-card">
+                <div class="card-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url(<%= cl_image_tag book.cover_photo || image_path "100x100.png"  %>);"></div>
+                <div class="card-description">
+                  <h2><%= book.title %></h2>
+                  <p>From: <%= book.user.full_name %></p>
+                  <p>$<%= book.price %></p>
+               </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+  </div>
 </div>

@@ -10,10 +10,12 @@
 @import "vendor/index";
 
 // Your CSS
+@import "variables";
 @import "layout/index";
 @import "components/index";
 @import "pages/index";
 @import "pages/devisestyle";
+@import "pages/dashboard";
 @import "components/book-card";
 @import "books/filter-sidebar";
 @import "books/index";

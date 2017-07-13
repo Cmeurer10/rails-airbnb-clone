@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get '/dashboard/update/:id', to: 'books#edit'
   patch '/dashboard/:id', to: 'books#update'
   delete '/dashboard/:id', to: 'books#destroy'
+  resources :purchases, path: "cart", only: [:create, :destroy]
+  get '/cart', to: 'purchases#index_cart'
+  get 'cart/checkout', to: 'purchases#finalize'
   root to: 'pages#home'
   mount Attachinary::Engine => "/attachinary"
 

@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   # Come back to validating university.  Maybe it is only nessicary if you are selling?
-  # validates :university, presence: true   
+  # validates :university, presence: true
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
@@ -35,6 +35,10 @@ class User < ApplicationRecord
     end
 
     return user
+  end
+
+  def full_name
+    self.first_name + ' ' + self.last_name
   end
 
 end

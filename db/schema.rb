@@ -51,8 +51,9 @@ ActiveRecord::Schema.define(version: 20170713053849) do
     t.integer  "user_id"
     t.integer  "book_id"
     t.string   "dialogue"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "finalized",  default: false
     t.index ["book_id"], name: "index_purchases_on_book_id", using: :btree
     t.index ["user_id"], name: "index_purchases_on_user_id", using: :btree
   end
