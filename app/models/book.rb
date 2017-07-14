@@ -15,7 +15,7 @@ class Book < ApplicationRecord
 
   def cover_photo
     if self.photo.present?
-      self.photo.path
+      self.photo.url
     else
       "book_upload_xidpjv"
     end
