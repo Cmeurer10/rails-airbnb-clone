@@ -69,6 +69,10 @@
 						<p><strong>Condition:</strong></p>
 						<p><%= book.condition %></p>
 					</div>
+					<div class="description">
+						<p><strong>Description:</strong></p>
+						<p><%= book.description %></p>
+					</div>
 					<div class="buy">
 						<%= link_to purchases_path(id: book.id), method: :post do %>
 							<div class="btn btn-primary checkout">Add to Cart

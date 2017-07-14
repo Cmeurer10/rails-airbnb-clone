@@ -25,7 +25,9 @@
 .search input{
 	border: 4px solid white;
 	padding: 10px;
-	border-radius: 10px;
+	// border-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 	opacity: 0.5;
 	width: 40%;
 }
@@ -33,9 +35,10 @@
 	margin-top: 100px;
 }
 
-body{
+html, body{
 	background-color: rgba(188, 171, 121, 0.2);
 	// background-color: #F0F0F0;
+	// height: 100%;
 }
 .selling{
 	height: 600px;
@@ -50,4 +53,20 @@ body{
 }
 .how-to{
 	margin-top: 40px;
+}
+.home-search{
+
+	padding-bottom: 8px;
+	padding-top: 8px;
+	opacity: 0.5;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	color: #5D5858;
+	background-color: none;
+	margin-left: -3px;
+	margin-bottom: 3px;
+
+}
+.icon-large {
+	font-size: 1.75em;
 }
