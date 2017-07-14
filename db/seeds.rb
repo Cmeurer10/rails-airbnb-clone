@@ -12,14 +12,14 @@
 User.destroy_all
 
 users = []
-users << User.new("first_name"=>"Kevin", "last_name"=>"Johnson", "university"=>"Tokyo University", "address" => "2-5-5 Azabu Juban, Minato, Tokyo", "email"=>"abc@gmail.com", "password"=>"123456")
-users << User.new({"first_name"=>"Earl", "last_name"=>"Harris", "university"=>"Waseda University", "address" => "3-11-1 Shinjuku, Tokyo", "email"=>"abcd@gmail.com", "password"=>"123456"})
-users << User.new({"first_name"=>"Amy", "last_name"=>"Brown", "university"=>"Tokyo University", "address" => "2-5-5 Azabu Juban, Minato, Tokyo", "email"=>"abcde@gmail.com", "password"=>"123456"})
-users << User.new({"first_name"=>"Mary", "last_name"=>"Potts", "university"=>"Tokyo University", "address" => "2-9-1 Azabu Juban, Minato, Tokyo", "email"=>"abcdef@gmail.com", "password"=>"123456"})
-users << User.new({"first_name"=>"Chris", "last_name"=>"Barry", "university"=>"Keio University", "address" => "1-8-5 Roppongi Hills, Minato, Tokyo", "email"=>"abcdefg@gmail.com", "password"=>"123456"})
-users << User.new({"first_name"=>"Simon", "last_name"=>"Thompson", "university"=>"Waseda University", "address" => "1-8-2 Roppongi, Minato, Tokyo", "email"=>"abcdefgh@gmail.com", "password"=>"123456"})
-users << User.new({"first_name"=>"Peter", "last_name"=>"Bradley", "university"=>"Waseda University", "address" => "1-5-3 Meguro-ku, Meguro, Tokyo", "email"=>"abcdefghi@gmail.com", "password"=>"123456"})
-users << User.new({"first_name"=>"David", "last_name"=>"Parker", "university"=>"Waseda University", "address" => "2-11-4 Meguro-ku, Meguro, Tokyo", "email"=>"abcdefghij@gmail.com", "password"=>"123456"})
+users << User.create!("first_name"=>"Kevin", "last_name"=>"Johnson", "university"=>"Tokyo University", "address" => "2-5-5 Azabu Juban, Minato, Tokyo", "password"=>"123456", email: "user0@example.org")
+users << User.create({"first_name"=>"Earl", "last_name"=>"Harris", "university"=>"Waseda University", "address" => "3-11-1 Shinjuku, Tokyo", "password"=>"123456", email: "user1@example.org"})
+users << User.create({"first_name"=>"Amy", "last_name"=>"Brown", "university"=>"Tokyo University", "address" => "2-5-5 Azabu Juban, Minato, Tokyo", "password"=>"123456", email: "user2@example.org"})
+users << User.create({"first_name"=>"Mary", "last_name"=>"Potts", "university"=>"Tokyo University", "address" => "2-9-1 Azabu Juban, Minato, Tokyo", "password"=>"123456", email: "user3@example.org"})
+users << User.create({"first_name"=>"Chris", "last_name"=>"Barry", "university"=>"Keio University", "address" => "1-8-5 Roppongi Hills, Minato, Tokyo", "password"=>"123456", email: "user4@example.org"})
+users << User.create({"first_name"=>"Simon", "last_name"=>"Thompson", "university"=>"Waseda University", "address" => "1-8-2 Roppongi, Minato, Tokyo", "password"=>"123456", email: "user5@example.org"})
+users << User.create({"first_name"=>"Peter", "last_name"=>"Bradley", "university"=>"Waseda University", "address" => "1-5-3 Meguro-ku, Meguro, Tokyo", "password"=>"123456", email: "user6@example.org"})
+users << User.create({"first_name"=>"David", "last_name"=>"Parker", "university"=>"Waseda University", "address" => "2-11-4 Meguro-ku, Meguro, Tokyo", "password"=>"123456", email: "user7@example.org"})
 
 # User.create(first_name: "David", last_name: "Parker")
 
@@ -51,16 +51,16 @@ end
 
 #purchases
 
-Purchase.destroy_all
-
-purchases = []
-purchases << Purchase.new({"dialogue"=>"I would like to purchase this book, make an exchange tomorrow?"})
-purchases << Purchase.new({"dialogue"=>"let's meet tomorrow to make the transaction of the book, alright?"})
-purchases << Purchase.new({"dialogue"=>"Do you want to make an exchange next Monday?"})
-purchases << Purchase.new({"dialogue"=>"I am in need of this book, please contact me at 123-123-234, thanks!"})
-
-purchases.each do |purchase|
-  purchase.book = books.reject(&:sold?).sample
-  purchase.user = users.reject { |user| purchase.book.user }.sample
-  purchase.save
-end
+# Purchase.destroy_all
+#
+# purchases = []
+# purchases << Purchase.new({"dialogue"=>"I would like to purchase this book, make an exchange tomorrow?"})
+# purchases << Purchase.new({"dialogue"=>"let's meet tomorrow to make the transaction of the book, alright?"})
+# purchases << Purchase.new({"dialogue"=>"Do you want to make an exchange next Monday?"})
+# purchases << Purchase.new({"dialogue"=>"I am in need of this book, please contact me at 123-123-234, thanks!"})
+#
+# purchases.each do |purchase|
+#   purchase.book = books.reject(&:sold?).sample
+#   purchase.user = users.reject { |user| purchase.book.user }.sample
+#   purchase.save
+# end

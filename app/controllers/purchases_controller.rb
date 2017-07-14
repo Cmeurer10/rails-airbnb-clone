@@ -32,7 +32,7 @@ class PurchasesController < ApplicationController
       purchase.book.save
       purchase.save
     end
-    UserMailer.purchase_confirmation(current_user, @purchases).deliver_now
+    # UserMailer.purchase_confirmation(current_user, @purchases).deliver_now
     redirect_to dashboard_path
   end
 
