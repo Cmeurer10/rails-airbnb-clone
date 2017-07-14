@@ -3,7 +3,7 @@
 		<% if @purchases.empty? %>
 		<div class="col-xs-12 col-md-6">
 			<h2>Your Cart is currently empty.</h2>
-			<p><%= link_to "Continue shopping", root_path %></p>
+			<p><%= link_to "Continue shopping", root_path, class: "btn btn-primary" %></p>
 		</div>
 		<% else %>
 		<div class="col-xs-12 col-md-10">
