@@ -5,7 +5,7 @@ class MapsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
-      marker.infowindow render_to_string(partial: "/shared/map_box", locals: { user: user })
+      marker.infowindow render_to_string( partial: "/shared/map_box", locals: { user: user })
     end
   end
 end
