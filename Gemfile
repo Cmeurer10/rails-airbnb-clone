@@ -17,18 +17,17 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'devise'
 gem 'omniauth-facebook'
-
-gem "geocoder"
-gem "coffee-rails"
-gem "gmaps4rails"
-
-source 'https://rails-assets.org' do
-  gem "rails-assets-underscore"
-end
-
 gem 'filterrific'
+gem 'cloudinary', '1.1.7'
+gem 'carrierwave', '~> 0.11.2'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
+
 
 group :development, :test do
+  gem 'letter_opener'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'listen', '~> 3.0.5'

@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   has_one :purchase, dependent: :nullify
   belongs_to :user
-  has_one :buyer, through: :purchase, source: :user
+  has_one :buyer, through: :purchase, source: :user, dependent: :nullify
   validates :title, presence: true
   validates :edition, presence: true
   validates :condition, presence: true, inclusion: { in: ['Good', 'Like New', 'Poor', 'Fair'] }
@@ -9,7 +9,17 @@ class Book < ApplicationRecord
   validates :subject, presence: true
   validates :publisher, presence: true
   # validates :isbn, presence: true
+  mount_uploader :photo, PhotoUploader
+  has_attachment :photo
 
+
+  def cover_photo
+    if self.photo.present?
+      self.photo.path
+    else
+      "book_upload_xidpjv"
+    end
+  end
 
   def sold?
     !buyer.nil?

@@ -1,3 +1,6 @@
+ 
+$footer_color: #2978A0;
+
 .footer {
   position: absolute;
   right: 0;
@@ -11,14 +14,14 @@
 }
 
 .footer-distributed{
-  background-color: #2f70a3;
+  background-color: $footer_color;
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   width: 100%;
   font: bold 14px sans-serif;
   text-align: left;
   padding: 10px 60px 10px;
-  margin-top: 80px;
+  /* margin-top: 80px; */
   overflow: hidden;
 }
 
@@ -37,9 +40,9 @@
   }
 }
 
-.footer-distributed .footer-left{
-  float: left;
-}
+// .footer-distributed .footer-left{
+//   float: left;
+// }
 
 /* The company logo */
 
@@ -79,7 +82,8 @@
 /* Footer social icons */
 
 .footer-distributed .footer-icons{
-  margin-top: 40px;
+  margin-top: 6px;
+  text-align: right;
   .footer-icon {
     color: #1f293a;
     &:hover {
@@ -93,7 +97,7 @@
   width: 35px;
   height: 35px;
   cursor: pointer;
-  background-color:  #2f70a3;
+  background-color:  $footer_color;
   border-radius: 2px;
 
   font-size: 20px;
@@ -230,3 +234,18 @@
 //     float: none;
 //   }
 // }
+.footer-title{
+  text-align: center;
+}
+
+.footer-top-padding{
+  padding-top: 15px;
+}
+@media screen and (min-width: 48em){
+    .footer-title{
+        text-align: left;
+    }
+    .footer-icons{
+      text-align: right;
+    }
+}

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :send_welcome_email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :nullify
   has_many :purchases, dependent: :nullify
-  has_many :books_purchased, through: :purchases, source: :book
+  has_many :books_purchased, through: :purchases, source: :book, dependent: :nullify
   validates :email, presence: true
   validates_format_of :email,:with => Devise::email_regexp
   validates :password, presence: true, length: { in: 6..20 }
@@ -37,7 +38,14 @@ class User < ApplicationRecord
     return user
   end
 
-  geocoded_by :address
-  after_validation :geocode, if: :address_changed?
+  def full_name
+    self.first_name + ' ' + self.last_name
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
+  end
 
 end

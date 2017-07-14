@@ -8,6 +8,8 @@
    background-position: center;
    color: white;
    height: 800px;
+   margin-bottom: -30px;
+   box-shadow: 4px 4px 3px black;
 } 
 
 .search{
@@ -27,3 +29,10 @@
 	margin-top: 100px;
 }
 
+body{
+	background-color: rgba(188, 171, 121, 0.2);
+	// background-color: #F0F0F0;
+}
+.selling{
+	height: 600px;
+}

@@ -1,0 +1,25 @@
+<div class="results">
+	<div class="row">
+		<% if @purchases.empty? %>
+		<div class="col-xs-12 col-md-6">
+			<h2>Your Cart is currently empty.</h2>
+			<p><%= link_to "Continue shopping", root_path %></p>
+		</div>
+		<% else %>
+		<div class="col-xs-12 col-md-6">
+			<h2>Your Cart Contains:</h2>
+			<% @purchases.each do |purchase| %>
+			  <p>
+			    <%= purchase.book.title %>
+			    <%= link_to "Remove from cart", purchase_path(purchase.id), method: :delete,
+			        data: {confirm: "Remove this from your cart?"} %>
+			  </p>
+			<% end %>
+			<p>Total: $<%= @total %></p>
+			<p><%= link_to "Continue shopping", root_path %></p>
+			<p><%= link_to "Confirm purchase and checkout", cart_checkout_path,
+			        data: {confirm: "Purchase all books for $#{@total}?"} %></p>
+		</div>
+		<% end %>	
+	</div>
+</div>

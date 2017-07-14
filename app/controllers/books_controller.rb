@@ -5,9 +5,12 @@ class BooksController < ApplicationController
   # GET /books.json
   # To be shown on search pages
   def index
-    @books = Book.search(params).to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
+    @books = Book.search(params).where(sold: false).to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
     @title = params[:title]
-
+    # respond_to do |format|
+    #     format.html { redirect_to "/books/list/#{books.title.gsub(' ', '_')}" }
+    #     format.js  # <-- will render `app/views/reviews/create.js.erb`
+    #   end
   end
 
   # GET /books/1
@@ -24,10 +27,12 @@ class BooksController < ApplicationController
       @books << Book.all.where(title: title).to_a
     end
     @books = @books.to_a.flatten.uniq(&:id)
-    @universities = @books.uniq { |u| u.university }
+    @universities = @books.uniq(&:university)
     @books = Book.search(params)
     @title = params[:title]
-
+    @books = @books.where(sold: false)
+    @user = current_user
+    @purchases = @user.purchases if current_user
   end
 
   # GET /books/new
@@ -102,6 +107,6 @@ class BooksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
       params.require(:book).permit(:title, :edition, :condition, :price, :subject,
-                                    :description, :publisher, :isbn)
+                                    :description, :publisher, :isbn, :photo, :photo_cache)
     end
 end
