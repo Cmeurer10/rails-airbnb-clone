@@ -29,6 +29,9 @@ class PurchasesController < ApplicationController
     @purchases.each do |purchase|
       purchase.finalized = true
       purchase.book.sold = true
+      unless purchase.book.photo
+        purchase.book.photo = nil
+      end
       purchase.book.save
       purchase.save
     end
