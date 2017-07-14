@@ -38,7 +38,7 @@
 									<p><%= purchase.book.description %></p>
 								</div>
 								<div class="buy">
-									<%= link_to "Remove from Cart", purchases_path(purchase.id), method: :delete, data: {confirm: "Remove this from your cart?"}, class: "btn btn-primary checkout" %>
+									<%= link_to "Remove from Cart", purchase_path(purchase), method: :delete, data: {confirm: "Remove this from your cart?"}, class: "btn btn-primary checkout" %>
 								</div>
 					  	</div>
 					</div>

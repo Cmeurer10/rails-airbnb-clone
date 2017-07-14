@@ -6,6 +6,12 @@
   </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
+    
+    <%= form_tag('/books', method: :get) do -%>
+      <div class="search-nav">
+        <%= text_field_tag :title, nil, placeholder: "Search for your book title" %>
+      </div>
+    <% end %>
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
