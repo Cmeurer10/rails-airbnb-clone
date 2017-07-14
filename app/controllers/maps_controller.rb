@@ -6,6 +6,9 @@ class MapsController < ApplicationController
       marker.lat user.latitude
       marker.lng user.longitude
       marker.infowindow render_to_string( partial: "/shared/map_box", locals: { user: user })
+
     end
   end
 end
+
+
