@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   validates :publisher, presence: true
   # validates :isbn, presence: true
   mount_uploader :photo, PhotoUploader
-  has_attachment :photo
+  # has_attachment :photo
 
 
   def cover_photo
