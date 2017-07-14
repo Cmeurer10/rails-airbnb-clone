@@ -35,11 +35,11 @@
   left: 150px;
 }
 .card-description h2 {
-  font-size: 14px;
+  font-size: 1.4em;
   font-weight: bolder;
 }
 .card-description p {
-  font-size: 13px;
+  font-size: 1.25em;
 }
 .card-link {
   top: 0;
@@ -52,4 +52,7 @@
 }
 .card-link:hover {
   opacity: 0.1;
+}
+.no-txt-deco:hover{
+  text-decoration: none;
 }

@@ -8,7 +8,7 @@
           <% @books.each do |book| %>
             <div class="col-xs-12 col-sm-3">
             <% title = book.title.strip.gsub(/[[:punct:]]/, ' ').split.map(&:capitalize).join(' ') %>
-            <%= link_to "/books/list/#{title.gsub(' ', '_')}", method: 'get' do %>
+            <%= link_to "/books/list/#{title.gsub(' ', '_')}", method: 'get', class: "no-txt-deco" do %>
               <div class="book-card">
                 <div class="card-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
        url('<%= cl_image_path book.cover_photo, :default_image => "default_image.png" %>');"></div>

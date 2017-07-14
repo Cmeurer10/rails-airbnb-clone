@@ -8,14 +8,18 @@
    background-position: center;
    color: white;
    height: 800px;
-   margin-bottom: -30px;
-   box-shadow: 4px 4px 3px black;
 } 
+.jumbotron h1{
+	font-size: 8.5em;
+}
+.jumbotron h4{
+	font-size: 2em;
+}
 
 .search{
 	color: #5D5858;
 	padding: 10px;
-	margin-top: 100px;
+	margin-top: 50px;
 
 }
 .search input{
@@ -35,4 +39,15 @@ body{
 }
 .selling{
 	height: 600px;
+}
+.info-img{
+	width: 200px;
+}
+.landing-info-card{
+	height: 500px;
+	margin-top: 40px;
+	
+}
+.how-to{
+	margin-top: 40px;
 }
