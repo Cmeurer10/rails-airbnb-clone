@@ -7,6 +7,10 @@ class BooksController < ApplicationController
   def index
     @books = Book.search(params).where(sold: false).to_a.uniq { |b| b.title.downcase.strip.delete(' ').gsub(/[[:punct:]]/, '') }
     @title = params[:title]
+    # respond_to do |format|
+    #     format.html { redirect_to "/books/list/#{books.title.gsub(' ', '_')}" }
+    #     format.js  # <-- will render `app/views/reviews/create.js.erb`
+    #   end
   end
 
   # GET /books/1
