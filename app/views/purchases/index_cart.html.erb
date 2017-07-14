@@ -9,17 +9,39 @@
 		<div class="col-xs-12 col-md-6">
 			<h2>Your Cart Contains:</h2>
 			<% @purchases.each do |purchase| %>
-			  <p>
-			    <%= purchase.book.title %>
-			    <%= link_to "Remove from cart", purchase_path(purchase.id), method: :delete,
-			        data: {confirm: "Remove this from your cart?"} %>
-			  </p>
+			  	<div class="col-xs-12 col-sm-6 col-md-4 list-card">
+					<div class="list-book-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+					 url('<%= cl_image_path purchase.book.cover_photo, :default_image => "default_image.png" %>')";></div>
+					<div class="avatar-container">
+						<%= image_tag purchase.book.user.facebook_picture_url || "100x100.png", class: "avatar avatar-large" %>
+					</div>
+					<div class="book-info">
+						<div class="price">
+			  				<p>$<%= purchase.book.price %></p>
+						</div>
+						<div class="subject">
+							<p><%= purchase.book.subject %></p>
+						</div>
+					</div>
+				  	<div class="book-details">
+							<div class="university">
+								<p><strong>University:</strong></p>
+								<p><%= purchase.book.user.university %></p>
+							</div>
+							<div class="condition">
+								<p><strong>Condition:</strong></p>
+								<p><%= purchase.book.condition %></p>
+							</div>
+							<div class="buy">
+								<%= link_to "Remove from Cart", purchases_path(purchase.id), method: :delete, data: {confirm: "Remove this from your cart?"}, class: "btn btn-primary checkout" %>
+							</div>
+				  	</div>
+				</div>
 			<% end %>
-			<p>Total: $<%= @total %></p>
-			<p><%= link_to "Continue shopping", root_path %></p>
-			<p><%= link_to "Confirm purchase and checkout", cart_checkout_path,
-			        data: {confirm: "Purchase all books for $#{@total}?"} %></p>
 		</div>
-		<% end %>	
+		<% end %>
 	</div>
 </div>
+			<p>Total: $<%= @total %></p>
+			<%= link_to "Continue shopping", root_path %>
+			<%= link_to "Confirm purchase and checkout", cart_checkout_path, data: {confirm: "Purchase all books for $#{@total}?"} %>
