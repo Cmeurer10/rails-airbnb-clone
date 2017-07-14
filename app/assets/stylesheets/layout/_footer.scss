@@ -82,7 +82,8 @@ $footer_color: #2978A0;
 /* Footer social icons */
 
 .footer-distributed .footer-icons{
-  margin-top: 40px;
+  margin-top: 6px;
+  text-align: right;
   .footer-icon {
     color: #1f293a;
     &:hover {
@@ -233,3 +234,18 @@ $footer_color: #2978A0;
 //     float: none;
 //   }
 // }
+.footer-title{
+  text-align: center;
+}
+
+.footer-top-padding{
+  padding-top: 15px;
+}
+@media screen and (min-width: 48em){
+    .footer-title{
+        text-align: left;
+    }
+    .footer-icons{
+      text-align: right;
+    }
+}
