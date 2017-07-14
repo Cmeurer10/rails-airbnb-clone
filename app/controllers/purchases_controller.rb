@@ -5,6 +5,15 @@ class PurchasesController < ApplicationController
   def index_cart
     @purchases = Purchase.all.where(user: current_user).where(finalized: false)
     @total = @purchases.map { |pur| pur.book.price.to_i }.reduce(&:+)
+
+    @users = @purchases.map { |pur| pur.book.user }
+    @users << current_user
+
+    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+      marker.infowindow render_to_string( partial: "/shared/map_box", locals: { user: user })
+    end
   end
 
   def index_dashboard
