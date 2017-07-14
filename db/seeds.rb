@@ -51,16 +51,16 @@ end
 
 #purchases
 
-Purchase.destroy_all
-
-purchases = []
-purchases << Purchase.new({"dialogue"=>"I would like to purchase this book, make an exchange tomorrow?"})
-purchases << Purchase.new({"dialogue"=>"let's meet tomorrow to make the transaction of the book, alright?"})
-purchases << Purchase.new({"dialogue"=>"Do you want to make an exchange next Monday?"})
-purchases << Purchase.new({"dialogue"=>"I am in need of this book, please contact me at 123-123-234, thanks!"})
-
-purchases.each do |purchase|
-  purchase.book = books.reject(&:sold?).sample
-  purchase.user = users.reject { |user| purchase.book.user }.sample
-  purchase.save
-end
+# Purchase.destroy_all
+#
+# purchases = []
+# purchases << Purchase.new({"dialogue"=>"I would like to purchase this book, make an exchange tomorrow?"})
+# purchases << Purchase.new({"dialogue"=>"let's meet tomorrow to make the transaction of the book, alright?"})
+# purchases << Purchase.new({"dialogue"=>"Do you want to make an exchange next Monday?"})
+# purchases << Purchase.new({"dialogue"=>"I am in need of this book, please contact me at 123-123-234, thanks!"})
+#
+# purchases.each do |purchase|
+#   purchase.book = books.reject(&:sold?).sample
+#   purchase.user = users.reject { |user| purchase.book.user }.sample
+#   purchase.save
+# end
