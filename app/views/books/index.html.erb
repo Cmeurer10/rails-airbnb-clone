@@ -6,7 +6,7 @@
     <div class="col-md-10 col-xs-12">
         <div class="row">
           <% @books.each do |book| %>
-            <div class="col-xs-12 col-sm-3">
+            <div class="col-xs-12 col-sm-4">
             <% title = book.title.strip.gsub(/[[:punct:]]/, ' ').split.map(&:capitalize).join(' ') %>
             <%= link_to "/books/list/#{title.gsub(' ', '_')}", method: 'get', class: "no-txt-deco" do %>
               <div class="book-card">
