@@ -24,7 +24,7 @@
             <li><%= link_to cart_path do %>
               <div class="cart-container">
                 <p>Cart</p>
-                <%= @purchases.length if @purchases.length >= 1 %>
+                <%= @purchases.where(finalized: false).length if @purchases.where(finalized: false).length >= 1 %>
               </div>
               <% end %>
             </li>
