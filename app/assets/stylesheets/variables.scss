@@ -13,3 +13,13 @@ $form-margin: 30px;
 	@include box-shadow(4px, 10px, 20px, #BEBEBE); 
 
 }
+h1, h2, h3, h4, p {
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+p{
+	font-size: 1.25em;
+} 
+// a{
+// 	font-size: 1.25em;
+// }
